@@ -6,3 +6,5 @@ Solicitações do integrante ao assistente, resumidas sem credenciais:
 4. Território informado: São Paulo.
 IA auxiliou na implementação, scripts, testes e documentação. O grupo deve revisar e saber explicar o código.
 Não há entrevistas, pesquisas de campo ou resultados reais inventados. Dados são simulados.
+
+5. Usar o README de refer?ncia fornecido pelo grupo, com badges, estrutura e perfis GitHub dos cinco integrantes.

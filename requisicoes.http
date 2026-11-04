@@ -1,0 +1,39 @@
+# Exemplo para extensões REST Client de IDE. Perfil demo local.
+@baseUrl = http://localhost:8080
+@adminKey = demo-saferoute-local
+
+### Conectividade real com o banco do perfil ativo
+GET {{baseUrl}}/api/health
+
+### Consultar regiões
+GET {{baseUrl}}/api/regions
+
+### Criar região temporária - anote o ID retornado
+POST {{baseUrl}}/api/regions
+X-Admin-Key: {{adminKey}}
+Content-Type: application/json
+
+{"name":"Região de avaliação","city":"São Paulo"}
+
+### Substitua 1000 pelo ID efetivamente retornado
+PUT {{baseUrl}}/api/regions/1000
+X-Admin-Key: {{adminKey}}
+Content-Type: application/json
+
+{"name":"Região de avaliação atualizada","city":"São Paulo"}
+
+### Excluir somente a região de avaliação criada acima
+DELETE {{baseUrl}}/api/regions/1000
+X-Admin-Key: {{adminKey}}
+
+### Consulta pública de trajeto
+POST {{baseUrl}}/api/routes
+Content-Type: application/json
+
+{"fromId":1,"toId":3,"accessible":true,"night":false}
+
+### Alertas ativos
+GET {{baseUrl}}/api/alerts
+
+### Contrato para os outros membros do grupo
+GET {{baseUrl}}/api/graph
