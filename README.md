@@ -204,4 +204,3 @@ Resultados em `evidencias/` e `STATUS_ENTREGA.md`. Testes H2 e testes no Oracle 
 
 - Enunciado FIAP GS CitizenTech 2026, páginas 31–33.
 - [Render: Docker](https://render.com/docs/docker) e [health checks](https://render.com/docs/health-checks).
-- Apoio de IA documentado em [prompts.md](prompts.md).
