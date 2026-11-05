@@ -41,7 +41,7 @@ public class RouteBO {
     warnings.add(
         network.enabled()
             ? "Trajeto calculado sobre ruas do OpenStreetMap. Bloqueios refletem somente"
-                  + " ocorrências registradas; confira as condições locais."
+                + " ocorrências registradas; confira as condições locais."
             : "Rede de testes: dados simulados.");
     if (network.enabled() && r.accessible())
       warnings.add(
@@ -61,6 +61,7 @@ public class RouteBO {
     var edges = new HashMap<Long, List<Segment>>();
     for (var s : network.segments(segments.list()))
       if (s.blocked() == 0
+          && network.generalFootAccess(s.id())
           && !forbidden.contains(s.id())
           && (!r.accessible() || s.accessible() == 1)) {
         edges.computeIfAbsent(s.fromId(), k -> new ArrayList<>()).add(s);

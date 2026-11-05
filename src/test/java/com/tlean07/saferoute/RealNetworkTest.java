@@ -20,6 +20,18 @@ import org.springframework.test.context.ActiveProfiles;
     })
 @ActiveProfiles("demo")
 class RealNetworkTest {
+  @Test
+  void restrictedAccessIsNeverUsedAsShortcut() {
+    var restricted =
+        network.segments(segments.list()).stream()
+            .filter(s -> !network.generalFootAccess(s.id()))
+            .toList();
+    assertEquals(11, restricted.size());
+    var edge = restricted.get(0);
+    var result = routes.calculate(new RouteBO.Request(edge.fromId(), edge.toId(), false, false));
+    assertTrue(result.segments().stream().allMatch(network::generalFootAccess));
+  }
+
   @Autowired RealNetwork network;
   @Autowired PointDAO points;
   @Autowired SegmentDAO segments;

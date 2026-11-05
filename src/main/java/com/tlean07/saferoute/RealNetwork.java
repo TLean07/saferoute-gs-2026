@@ -51,7 +51,7 @@ public class RealNetwork implements InitializingBean {
       try {
         importMissing();
         return;
-      } catch (org.springframework.transaction.CannotCreateTransactionException
+      } catch (org.springframework.transaction.TransactionException
           | org.springframework.dao.DataAccessResourceFailureException e) {
         if (attempt == 3) throw e;
         org.slf4j.LoggerFactory.getLogger(getClass())
@@ -134,6 +134,16 @@ public class RealNetwork implements InitializingBean {
     return segmentMetadata.containsKey(id);
   }
 
+  public boolean generalFootAccess(long id) {
+    if (!enabled || !isRealSegment(id)) return true;
+    JsonNode tags = segment(id).path("tags");
+    String foot = tags.path("foot").asText("");
+    if (Set.of("yes", "designated", "permissive").contains(foot)) return true;
+    if (!foot.isEmpty()) return false;
+    String access = tags.path("access").asText("");
+    return Set.of("", "yes", "permissive", "designated").contains(access);
+  }
+
   public JsonNode point(long id) {
     return pointMetadata.get(id);
   }
@@ -204,6 +214,7 @@ public class RealNetwork implements InitializingBean {
                   row.put("blocked", s.blocked());
                   if (enabled) {
                     row.put("osmWayId", segment(s.id()).path("osmWayId").asLong());
+                    row.put("accessRestriction", !generalFootAccess(s.id()));
                     row.put(
                         "accessibility",
                         s.accessible() == 1

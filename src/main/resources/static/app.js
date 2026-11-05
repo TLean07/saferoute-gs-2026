@@ -26,7 +26,8 @@ function draw(){
  for(const s of graph.segments){const a=pointById.get(s.fromId),b=pointById.get(s.toId);if(!a||!b)continue;
   const popup=el('div');popup.append(el('b',s.name),el('p',s.meters+' m · acessibilidade: '+(s.accessibility==='yes'?'cadastrada':s.accessibility==='no'?'não':'não informada')));
   const choose=el('button','Selecionar trecho no painel');choose.onclick=()=>{$('segment').value=s.id;document.querySelector('details').open=true;$('segment').focus()};popup.append(choose);
-  L.polyline([[a.latitude,a.longitude],[b.latitude,b.longitude]],{color:s.blocked||blocked.has(s.id)?'#bd4838':'#688895',weight:s.blocked||blocked.has(s.id)?6:3,opacity:.8}).bindTooltip(el('span',s.name)).bindPopup(popup).addTo(networkLayer);
+  if(s.accessRestriction)popup.append(el('p','Acesso restrito no OpenStreetMap; excluído do cálculo de passagem.'));
+  L.polyline([[a.latitude,a.longitude],[b.latitude,b.longitude]],{color:s.blocked||s.accessRestriction||blocked.has(s.id)?'#bd4838':'#688895',weight:s.blocked||s.accessRestriction||blocked.has(s.id)?6:3,opacity:.8}).bindTooltip(el('span',s.name)).bindPopup(popup).addTo(networkLayer);
  }mark();
 }
 async function loadGraph(){
