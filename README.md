@@ -182,7 +182,8 @@ Resultados em `evidencias/` e `STATUS_ENTREGA.md`. Testes H2 e testes no Oracle 
     </td>
     <td align="center">
       <a href="https://github.com/TLean07">
-        <img src="https://github.com/TLean07.png" width="90px;" alt="Leandro Afonso Silva Santos Junior"/><br />
+        <img src="https://github.com/TLean07.png" width="90px;" alt="TLean07"/><br />
+        <sub><b>TLean07</b></sub>
       </a><br /><sub>RM 561344</sub>
     </td>
     <td align="center">
