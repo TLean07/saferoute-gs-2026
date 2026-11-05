@@ -47,6 +47,26 @@ public class RealNetwork implements InitializingBean {
   @Override
   public void afterPropertiesSet() {
     if (!enabled) return;
+    for (int attempt = 1; attempt <= 3; attempt++) {
+      try {
+        importMissing();
+        return;
+      } catch (org.springframework.transaction.CannotCreateTransactionException
+          | org.springframework.dao.DataAccessResourceFailureException e) {
+        if (attempt == 3) throw e;
+        org.slf4j.LoggerFactory.getLogger(getClass())
+            .warn("Conexão Oracle indisponível na importação; nova tentativa {}", attempt + 1);
+        try {
+          Thread.sleep(1000L * attempt);
+        } catch (InterruptedException interrupted) {
+          Thread.currentThread().interrupt();
+          throw e;
+        }
+      }
+    }
+  }
+
+  private void importMissing() {
     transaction.executeWithoutResult(
         status -> {
           if (db.queryForObject("SELECT COUNT(*) FROM SR_REGION WHERE ID=900", Integer.class) == 0)
