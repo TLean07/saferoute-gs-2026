@@ -18,7 +18,7 @@
 | Público | Moradores, trabalhadores e pessoas com mobilidade reduzida. |
 | Problema | Dificuldade para consultar condições dos trechos e alternativas durante chuvas. |
 | Capacidade central | Registrar ocorrências e leituras, apresentar alertas e calcular alternativas. |
-| Integração | Java + Oracle; `/api/graph` disponibiliza os dados à equipe de algoritmos Python. |
+| Integração | API Java + persistência Oracle; `/api/graph` fornece a rede à interface. |
 | ODS | 11: mobilidade e resiliência urbana; 10: acessibilidade; 13: adaptação climática. |
 | Avaliação proposta | Medir desvio de bloqueios e tempo para localizar alternativa. Ainda sem medição em campo. |
 
@@ -36,7 +36,7 @@ O backend tem modelos, DAOs com SQL parametrizado, BOs com regras de negócio, c
 
 Todos os arquivos desta entrega estão neste ZIP. Extraia a pasta completa e execute o projeto a partir dela. O Maven Wrapper incluído baixa as dependências na primeira execução.
 
-Para navegar no pacote: instruções de execução abaixo, [requisições HTTP](requisicoes.http), [evidências](evidencias/) e [contrato de integração](INTEGRACAO_PYTHON.md). O deploy é apenas uma demonstração adicional: https://saferoute-gs-2026.onrender.com.
+Instruções de execução abaixo e exemplos em [requisições HTTP](requisicoes.http). Aplicação publicada: https://saferoute-gs-2026.onrender.com.
 
 ---
 
@@ -56,10 +56,8 @@ saferoute/
 │   ├── application*.properties # Perfis oracle e demo
 │   └── static/index.html       # Interface responsiva
 ├── src/test/java/              # Testes de integração HTTP com H2
-├── sql/                       # DDL, DML e DQL Oracle
-├── evidencias/                # Resultados reais de verificação
+├── sql/                       # Criação e carga inicial do Oracle
 ├── Dockerfile / render.yaml   # Publicação no Render
-├── INTEGRACAO_PYTHON.md        # Contrato do grafo para outra disciplina
 └── SafeRoute_Java_GS.pdf       # Documento único da disciplina
 ```
 
@@ -76,7 +74,7 @@ saferoute/
 - **Alertas:** a lista mostra apenas ocorrências não encerradas e ainda válidas. Excluir uma ocorrência remove seus alertas na mesma transação.
 - **Tempo:** campos `LocalDateTime` representam UTC; a conexão Oracle usa sessão UTC.
 
-O grafo é pedestre, bidirecional e esquemático. Não existe integração com trânsito, previsão meteorológica, SMS ou push. O algoritmo Java permite demonstrar a API; o módulo Python permanece sob responsabilidade da outra disciplina.
+O grafo é pedestre, bidirecional e esquemático. Não existe integração com trânsito, previsão meteorológica, SMS ou push.
 
 ---
 
@@ -142,10 +140,8 @@ Com a carga inicial e o alagamento vigente no trecho 1, a resposta contém `FOUN
 
 - Nove testes automatizados passaram com HTTP real e H2 em modo Oracle.
 - Render + Oracle FIAP: health, grafo, rota, autenticação, CRUD, erro 404 e integridade referencial verificados.
-- As três consultas DQL e a carga de 39 registros foram conferidas pelo MCP SQLcl.
-- O modelo nativo foi importado, salvo, reaberto e exportado no Oracle Data Modeler.
 
-Resultados em `evidencias/` e `STATUS_ENTREGA.md`. Testes H2 e testes no Oracle estão identificados separadamente.
+Os testes automatizados estão em `src/test/java/` e podem ser executados com o Maven Wrapper.
 
 ---
 
