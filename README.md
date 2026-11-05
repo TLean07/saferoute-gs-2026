@@ -14,7 +14,7 @@
 | Campo | Definição |
 | --- | --- |
 | Solução / equipe | SafeRoute |
-| Território | São Paulo; bairro ainda não delimitado. Rede demonstrativa simulada. |
+| Território | Jardim Pantanal, distrito Jardim Helena, São Paulo (SP). Rede demonstrativa simulada. |
 | Público | Moradores, trabalhadores e pessoas com mobilidade reduzida. |
 | Problema | Dificuldade para consultar condições dos trechos e alternativas durante chuvas. |
 | Capacidade central | Registrar ocorrências e leituras, apresentar alertas e calcular alternativas. |
@@ -22,7 +22,7 @@
 | ODS | 11: mobilidade e resiliência urbana; 10: acessibilidade; 13: adaptação climática. |
 | Avaliação proposta | Medir desvio de bloqueios e tempo para localizar alternativa. Ainda sem medição em campo. |
 
-Os cenários são fictícios. Não houve pesquisa com moradores ou comprovação de impacto real nesta entrega. A plataforma não orienta deslocamentos reais nem substitui alertas oficiais.
+O Jardim Pantanal foi escolhido por seu histórico de inundações, documentado pela [Prefeitura de São Paulo](https://gestaourbana.prefeitura.sp.gov.br/urbanismo-social-jardim-pantanal/). O bairro é real; os setores, pontos, trechos e sensores do protótipo são simulados. Os cenários são fictícios. Não houve pesquisa com moradores ou comprovação de impacto real nesta entrega. A plataforma não orienta deslocamentos reais nem substitui alertas oficiais.
 
 ---
 
@@ -32,7 +32,11 @@ A SafeRoute reúne informações sobre circulação em períodos de chuva. O cid
 
 O backend tem modelos, DAOs com SQL parametrizado, BOs com regras de negócio, controllers REST e tratamento centralizado de exceções. A interface web acompanha a API para demonstrar o fluxo completo.
 
-**[Acessar aplicação](https://saferoute-gs-2026.onrender.com)** · **[Repositório](https://github.com/TLean07/saferoute-gs-2026)** · **[Documentação PDF](SafeRoute_Java_GS.pdf)**
+**[Documentação PDF](SafeRoute_Java_GS.pdf)** · **[Código-fonte](src/main/java/br/com/saferoute/)** · **[Interface web](src/main/resources/static/index.html)** · **[Scripts SQL](sql/)** · **[Testes](src/test/java/br/com/saferoute/)**
+
+Todos os arquivos desta entrega estão neste ZIP. Extraia a pasta completa e execute o projeto a partir dela. O Maven Wrapper incluído baixa as dependências na primeira execução.
+
+Para navegar no pacote: instruções de execução abaixo, [requisições HTTP](requisicoes.http), [evidências](evidencias/) e [contrato de integração](INTEGRACAO_PYTHON.md). O deploy é apenas uma demonstração adicional: https://saferoute-gs-2026.onrender.com.
 
 ---
 
@@ -56,7 +60,6 @@ saferoute/
 ├── evidencias/                # Resultados reais de verificação
 ├── Dockerfile / render.yaml   # Publicação no Render
 ├── INTEGRACAO_PYTHON.md        # Contrato do grafo para outra disciplina
-├── prompts.md                 # Registro de apoio de IA
 └── SafeRoute_Java_GS.pdf       # Documento único da disciplina
 ```
 
@@ -204,4 +207,3 @@ Resultados em `evidencias/` e `STATUS_ENTREGA.md`. Testes H2 e testes no Oracle 
 
 - Enunciado FIAP GS CitizenTech 2026, páginas 31–33.
 - [Render: Docker](https://render.com/docs/docker) e [health checks](https://render.com/docs/health-checks).
-- Apoio de IA documentado em [prompts.md](prompts.md).

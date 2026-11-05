@@ -2,10 +2,10 @@
 
 Verificação em 04/11/2026. Projeto referente à GS CitizenTech 2026.
 
-- GitHub: https://github.com/TLean07/saferoute-gs-2026
+- Código-fonte completo: `src/`, neste ZIP. Build: `pom.xml` e Maven Wrapper incluídos.
 - Render: https://saferoute-gs-2026.onrender.com
 - Serviço Render: `saferoute-gs-2026`, plano gratuito, Oracle FIAP.
-- Código funcional verificado: commit `b4ee834` (documentação pode ter commits posteriores).
+- Arquivos locais conferidos pelo manifesto `MANIFEST_SHA256.json`.
 - Nove testes locais passaram com HTTP e H2; evidência em `evidencias/testes_locais.txt`.
 - Teste real no Render + Oracle em `evidencias/render_oracle.json`: conexão, grafo, rota acessível, autenticação, CRUD, 404 e proteção de FK.
 - Modelo nativo Oracle Data Modeler e scripts completos no ZIP de Database.
