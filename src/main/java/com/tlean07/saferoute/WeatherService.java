@@ -32,7 +32,7 @@ public class WeatherService {
     this.mapper = mapper;
     this.endpoint = endpoint;
     this.clock = clock;
-    this.client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(4)).build();
+    this.client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10)).build();
   }
 
   public synchronized Map<String, Object> current() {
@@ -42,7 +42,7 @@ public class WeatherService {
       try {
         var request =
             HttpRequest.newBuilder(endpoint)
-                .timeout(Duration.ofSeconds(8))
+                .timeout(Duration.ofSeconds(15))
                 .header(
                     "User-Agent", "SafeRoute-FIAP/1.0 (+https://saferoute-gs-2026.onrender.com)")
                 .GET()

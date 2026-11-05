@@ -46,8 +46,8 @@ async function loadGraph(){
  }
 }
 async function loadWeather(){
- try{const r=await fetch('/api/weather',{signal:AbortSignal.timeout(15000)});const w=await r.json();$('weather-current').replaceChildren();$('weather-hours').replaceChildren();
-  if(!r.ok||!w.data){$('weather-status').textContent='Previsão temporariamente indisponível.';$('weather-source').textContent='Open-Meteo não respondeu com dados atuais. Nenhum valor estimado foi inventado.';return}
+ try{const r=await fetch('/api/weather',{signal:AbortSignal.timeout(22000)});const w=await r.json();$('weather-current').replaceChildren();$('weather-hours').replaceChildren();
+  if(!r.ok||!w.data){$('weather-status').textContent='Previsão temporariamente indisponível.';$('weather-source').textContent='Open-Meteo não respondeu com dados atuais. Tente atualizar novamente em alguns instantes.';return}
   const c=w.data.current;$('weather-status').textContent=w.status==='STALE'?'Última consulta válida — atualização indisponível.':'Dados meteorológicos disponíveis';
   $('weather-current').append(el('strong',Number(c.temperature_2m).toLocaleString('pt-BR')+' °C'),el('p',c.precipitation+' mm · precipitação estimada'));
   const h=w.data.hourly;const now=Date.now();let count=0;
