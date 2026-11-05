@@ -30,10 +30,13 @@ X-Admin-Key: {{adminKey}}
 POST {{baseUrl}}/api/routes
 Content-Type: application/json
 
-{"fromId":1,"toId":3,"accessible":true,"night":false}
+{"fromId":13106396488,"toId":7907574602,"accessible":false,"night":false}
 
 ### Alertas ativos
 GET {{baseUrl}}/api/alerts
 
-### Contrato para os outros membros do grupo
+### Malha georreferenciada usada pela interface
 GET {{baseUrl}}/api/graph
+
+### Previsão meteorológica regional
+GET {{baseUrl}}/api/weather
