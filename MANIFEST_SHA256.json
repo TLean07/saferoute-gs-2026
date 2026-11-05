@@ -23,7 +23,7 @@
   "src/main/resources/application.properties": "066af1fb6f0a10d944497fbe119c2cfa2da9dfdc31005b4447abf29babf3b9bc",
   "src/main/resources/data-demo.sql": "41f3d5ecd1183654c8a362aa7534a02fab7340f1b31936dd02b5bb4d4f4f3f0c",
   "src/main/resources/schema-demo.sql": "c30b070c504633e4965e880fc49141a7c8873c3bfc50df4ce7a2dc7ed1257e54",
-  "src/main/resources/static/index.html": "e273dcf5924cc51cf75445b40f189355e6a31438b3b3d3786eb09fa295b763e4",
+  "src/main/resources/static/index.html": "f2ae2d26bebe8959474016313946b6a51125992678e4835526e2c3a9e4692ffb",
   "src/main/java/br/com/saferoute/Alert.java": "8a9533c75102785482a4518127bd66969575e1cc3a8a131489fd59d9539b4015",
   "src/main/java/br/com/saferoute/AlertDAO.java": "ac6445c4cd8ac7d7b655b832c0f71f7140620bb4c1c551d566a861049feba50c",
   "src/main/java/br/com/saferoute/ApiAccess.java": "952123c10734f80c59b7e6933a35e744f0e63d5763c0241eaf01e1045cb8ec6b",
